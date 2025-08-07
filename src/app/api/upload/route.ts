@@ -1,6 +1,7 @@
 import {Pinecone} from "@pinecone-database/pinecone";
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+import { DocxLoader } from "@langchain/community/document_loaders/fs/docx";
 // import { OpenAI, OpenAIEmbeddings } from "@langchain/openai";
 import { ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
 
@@ -25,10 +26,16 @@ export async function POST(req:Request){
 
         //convert file to blob
         const blob = new Blob([await file.arrayBuffer()] , {type:file.type});
+        console.log(blob.type);
 
+        let loader;
+        if(blob.type=='application/pdf'){
+            loader = new PDFLoader(blob);
+        }else{
+            loader= new DocxLoader(blob)
+        }
         //Loading and parsing the Docs
-        const loader = new PDFLoader(blob);
-        const docs = await loader.load();
+        const docs = await loader?.load();
 
         //Splitting text into Chunks 
         const textSplitter = new RecursiveCharacterTextSplitter({

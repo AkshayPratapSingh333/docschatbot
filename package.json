@@ -9,7 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@langchain/community": "^0.3.49",
+    "@langchain/community": "^0.3.50",
+    "@langchain/core": "^0.3.67",
     "@langchain/google-genai": "^0.2.16",
     "@langchain/pinecone": "^0.2.0",
     "@pinecone-database/pinecone": "^5.1.2",
@@ -33,6 +34,7 @@
     "katex": "^0.16.22",
     "langchain": "^0.3.30",
     "lucide-react": "^0.536.0",
+    "mammoth": "^1.10.0",
     "mongoose": "^8.17.0",
     "next": "15.4.5",
     "next-auth": "^4.24.11",
