@@ -135,103 +135,103 @@ export default function Home() {
       </nav>
 
       <div className="container mx-auto p-4">
-        <div className="grid flex-row gap-6">
-          <div className="md:col-span-2 flex  gap-10 ">
-            <div className="w-[700px]">
-              <Card className="p-4 mb-6 bg-gradient-to-br from-white/80 via-blue-50/60 to-cyan-50/60 dark:from-slate-800/90 dark:via-blue-900/30 dark:to-teal-900/30 border-blue-200 dark:border-teal-700 shadow-lg shadow-blue-100/50 dark:shadow-teal-900/20 backdrop-blur-sm">
-                <div
-                  {...getRootProps()}
-                  className={`border-2 border-dashed rounded-lg p-4 text-center cursor-pointer transition-all duration-300 ${
-                    isDragActive
-                      ? "border-cyan-500 dark:border-cyan-400 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 scale-105 shadow-lg"
-                      : "border-teal-300 dark:border-teal-600 bg-gradient-to-br from-slate-50/50 to-emerald-50/50 dark:from-slate-700/50 dark:to-teal-800/30 hover:border-cyan-400 dark:hover:border-cyan-500 hover:shadow-md"
-                  }`}
-                >
-                  <input {...getInputProps()} />
-                  {uploadProgress ? (
-                    <div className="flex flex-col justify-center items-center gap-4">
-                      <div className="relative">
-                        <Loader2 className="animate-spin size-6 text-cyan-600 dark:text-cyan-400" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full opacity-20 animate-pulse"></div>
-                      </div>
-                      <div className="text-center">
-                        <p className="text-lg font-medium text-slate-700 dark:text-slate-300">
-                          Processing Document
-                        </p>
-                        <p className="text-sm text-slate-500 dark:text-slate-400">
-                          Please wait while we analyze your file...
-                        </p>
-                      </div>
+        <div className="flex flex-col lg:flex-row gap-6">
+          <div className="w-full lg:w-1/2 flex flex-col gap-6">
+            <Card className="p-4 mb-6 bg-gradient-to-br from-white/80 via-blue-50/60 to-cyan-50/60 dark:from-slate-800/90 dark:via-blue-900/30 dark:to-teal-900/30 border-blue-200 dark:border-teal-700 shadow-lg shadow-blue-100/50 dark:shadow-teal-900/20 backdrop-blur-sm">
+              <div
+                {...getRootProps()}
+                className={`border-2 border-dashed rounded-lg p-4 text-center cursor-pointer transition-all duration-300 ${
+                  isDragActive
+                    ? "border-cyan-500 dark:border-cyan-400 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 scale-105 shadow-lg"
+                    : "border-teal-300 dark:border-teal-600 bg-gradient-to-br from-slate-50/50 to-emerald-50/50 dark:from-slate-700/50 dark:to-teal-800/30 hover:border-cyan-400 dark:hover:border-cyan-500 hover:shadow-md"
+                }`}
+              >
+                <input {...getInputProps()} />
+                {uploadProgress ? (
+                  <div className="flex flex-col justify-center items-center gap-4">
+                    <div className="relative">
+                      <Loader2 className="animate-spin size-6 text-cyan-600 dark:text-cyan-400" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full opacity-20 animate-pulse"></div>
                     </div>
-                  ) : (
-                    <div className=" w-[500px] flex flex-col items-center justify-center gap-4">
-                      <div className="p-4 bg-gradient-to-br from-teal-100 to-cyan-100 dark:from-teal-800/50 dark:to-cyan-800/50 rounded-full">
-                        <Upload className="size-6 text-teal-600 dark:text-cyan-400" />
-                      </div>
-                      <div className="text-center">
-                        <p className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-2">
-                          Drag and Drop Files Here
-                        </p>
-                        <p className="text-sm text-slate-500 dark:text-slate-400">
-                          Or click to select • PDF files up to 20MB
-                        </p>
-                      </div>
+                    <div className="text-center">
+                      <p className="text-lg font-medium text-slate-700 dark:text-slate-300">
+                        Processing Document
+                      </p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400">
+                        Please wait while we analyze your file...
+                      </p>
                     </div>
-                  )}
+                  </div>
+                ) : (
+                  <div className="w-full flex flex-col items-center justify-center gap-4">
+                    <div className="p-4 bg-gradient-to-br from-teal-100 to-cyan-100 dark:from-teal-800/50 dark:to-cyan-800/50 rounded-full">
+                      <Upload className="size-6 text-teal-600 dark:text-cyan-400" />
+                    </div>
+                    <div className="text-center">
+                      <p className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                        Drag and Drop Files Here
+                      </p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400">
+                        Or click to select • PDF files up to 20MB
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </Card>
+
+            {error && (
+              <Card className="p-4 mb-6 bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border-red-200 dark:border-red-700 shadow-md">
+                <div className="flex items-center gap-3">
+                  <div className="p-1 bg-red-100 dark:bg-red-800/50 rounded-full">
+                    <div className="size-3 bg-red-500 rounded-full"></div>
+                  </div>
+                  <p className="text-red-700 dark:text-red-300 font-medium">
+                    {error}
+                  </p>
                 </div>
               </Card>
+            )}
 
-              {error && (
-                <Card className="p-4 mb-6 bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border-red-200 dark:border-red-700 shadow-md">
-                  <div className="flex items-center gap-3">
-                    <div className="p-1 bg-red-100 dark:bg-red-800/50 rounded-full">
-                      <div className="size-3 bg-red-500 rounded-full"></div>
-                    </div>
-                    <p className="text-red-700 dark:text-red-300 font-medium">
-                      {error}
-                    </p>
+            {summary && (
+              <Card className="p-6 mb-8 bg-gradient-to-br from-emerald-50/80 via-teal-50/60 to-cyan-50/60 dark:from-slate-800/90 dark:via-emerald-900/20 dark:to-teal-900/30 border-emerald-200 dark:border-emerald-700 shadow-lg shadow-emerald-100/50 dark:shadow-emerald-900/20 backdrop-blur-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-gradient-to-br from-emerald-500 to-teal-600 dark:from-emerald-400 dark:to-teal-500 rounded-lg shadow-md">
+                    <Sparkles className="size-5 text-white" />
                   </div>
-                </Card>
-              )}
-
-              {summary && (
-                <Card className="p-6 mb-8 bg-gradient-to-br from-emerald-50/80 via-teal-50/60 to-cyan-50/60 dark:from-slate-800/90 dark:via-emerald-900/20 dark:to-teal-900/30 border-emerald-200 dark:border-emerald-700 shadow-lg shadow-emerald-100/50 dark:shadow-emerald-900/20 backdrop-blur-sm">
-                  <div className="flex w-[500px] items-center gap-3 mb-4">
-                    <div className="p-2 bg-gradient-to-br from-emerald-500 to-teal-600 dark:from-emerald-400 dark:to-teal-500 rounded-lg shadow-md">
-                      <Sparkles className="size-5 text-white" />
-                    </div>
-                    <h2 className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400 bg-clip-text text-transparent">
-                      Document Summary
-                    </h2>
-                  </div>
-                  <div className="prose prose-slate dark:prose-invert max-w-none">
-                    <div className="h-64 overflow-y-auto bg-white/60 dark:bg-slate-700/50 rounded-lg border border-emerald-200 dark:border-emerald-800 scroll-smooth">
-                      <div className="text-slate-700 dark:text-slate-300 leading-relaxed p-4">
-                        <Markdown
-                          remarkPlugins={[
-                            remarkGfm,
-                            remarkMath,
-                            remarkParse,
-                            remarkEmoji,
-                          ]}
-                          rehypePlugins={[
-                            rehypeKatex,
-                            rehypeHighlight,
-                            rehypeSanitize,
-                            rehypeStringify,
-                            rehypeSlug,
-                            rehypeAutolinkHeadings,
-                          ]}
-                        >
-                          {summary.trim()}
-                        </Markdown>
-                      </div>
+                  <h2 className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400 bg-clip-text text-transparent">
+                    Document Summary
+                  </h2>
+                </div>
+                <div className="prose prose-slate dark:prose-invert max-w-none">
+                  <div className="h-64 overflow-y-auto bg-white/60 dark:bg-slate-700/50 rounded-lg border border-emerald-200 dark:border-emerald-800 scroll-smooth">
+                    <div className="text-slate-700 dark:text-slate-300 leading-relaxed p-4">
+                      <Markdown
+                        remarkPlugins={[
+                          remarkGfm,
+                          remarkMath,
+                          remarkParse,
+                          remarkEmoji,
+                        ]}
+                        rehypePlugins={[
+                          rehypeKatex,
+                          rehypeHighlight,
+                          rehypeSanitize,
+                          rehypeStringify,
+                          rehypeSlug,
+                          rehypeAutolinkHeadings,
+                        ]}
+                      >
+                        {summary.trim()}
+                      </Markdown>
                     </div>
                   </div>
-                </Card>
-              )}
-            </div>
+                </div>
+              </Card>
+            )}
+          </div>
 
+          <div className="w-full lg:w-1/2 flex">
             <ChatInterface
               onSendMessage={handleMessage}
               loading={loading}
