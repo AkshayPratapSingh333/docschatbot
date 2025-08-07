@@ -1,0 +1,21 @@
+'use client'
+import { useSearchParams } from 'next/navigation';
+import React, { useEffect } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+
+export default function Toast() {
+    const params = useSearchParams();
+
+    useEffect(() => {
+        if(params?.get("error") && params.get("error") !== "" ){
+            toast.error(params.get("error") , {theme:"colored"})
+        }
+    } , [params])
+  return (
+    <div>
+        <ToastContainer/>
+      
+    </div>
+  )
+}
+
