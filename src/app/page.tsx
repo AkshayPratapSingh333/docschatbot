@@ -69,6 +69,7 @@ export default function Home() {
     onDrop,
     accept: {
       "application/pdf": [".pdf"],
+      "application/docx": [".docx"],
     },
     maxSize: 20 * 1024 * 1024, // 20 MB
   });
