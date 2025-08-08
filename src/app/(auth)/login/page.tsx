@@ -14,13 +14,17 @@ interface loginErrortype {
 }
 
 export default function Login() {
-  const params = useSearchParams();
+  // const params = useSearchParams();
   const [message, setMessage] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Client-side only access to URL params
+    const params = new URLSearchParams(window.location.search);
     setMessage(params.get("message"));
-    console.log("The query is", params.get("error"));
-  }, [params]);
+    setError(params.get("error"));
+  }, []);
+
 
   const [authState, setAuthState] = useState({
     email: "",
