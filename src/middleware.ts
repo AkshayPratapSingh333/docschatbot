@@ -15,15 +15,15 @@ export async function middleware(request:NextRequest){
     const token = await getToken({req:request})
 
     // User Protected Routes Means after login only these routes can be accessible by user  
-    const userProtectedRoutes = ["/"];
+    // const userProtectedRoutes = ["/"];
     // Admin Protected Routes
     const adminProtectedRoutes = ["/admin/dashboard"];
 
     //Here we check token whether if  user , admin and unknown user have token or not 
 
-    if(token == null && (userProtectedRoutes.includes(pathname) || adminProtectedRoutes.includes(pathname))){
-        return NextResponse.redirect(new URL("/login?error=Login To Access This Route" , request.url))
-    }
+    // if(token == null && (userProtectedRoutes.includes(pathname) || adminProtectedRoutes.includes(pathname))){
+    //     return NextResponse.redirect(new URL("/login?error=Login To Access This Route" , request.url))
+    // }
 
 
     // get user from token 
@@ -35,8 +35,8 @@ export async function middleware(request:NextRequest){
     }
 
     // For Privacy Of user So that Admin cannot access user details 
-     if(userProtectedRoutes.includes(pathname) && user.role == "admin"){
-        return NextResponse.redirect(new URL("/login?error=login first to access the admin routes", request.url))
-    }
+    //  if(userProtectedRoutes.includes(pathname) && user.role == "admin"){
+    //     return NextResponse.redirect(new URL("/login?error=login first to access the admin routes", request.url))
+    // }
 
 }
