@@ -17,7 +17,6 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { ChatInterface } from "@/components/chat-interface";
 import { DocumentMetadata } from "@/lib/types";
-import SignOutButton from "@/components/signOutButton";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Home() {
@@ -128,9 +127,6 @@ export default function Home() {
           <div className="flex items-center gap-4">
             {/* Theme Toggle */}
             <ThemeToggle />
-
-            {/* Sign Out Button */}
-            <SignOutButton />
           </div>
         </div>
       </nav>

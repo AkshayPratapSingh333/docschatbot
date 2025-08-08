@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from 'react-hot-toast'
-import NextAuthProvider from "@/provider/NextAuthProvider";
 import { ThemeProvider } from '@/components/theme-provider'
 
 const geistSans = Geist({
@@ -30,20 +29,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       <NextAuthProvider>
-
           <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
-
-
-        </NextAuthProvider>
-        <Toaster position="top-center" reverseOrder={false} />
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+          <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>
   );
